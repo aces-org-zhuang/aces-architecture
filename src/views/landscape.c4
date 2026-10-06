@@ -1,25 +1,27 @@
-// Cross-project landscape views.
+// Cross-project views.
 //
-// This layer aggregates systems across project design repos. It answers
-// questions no single project repo can: what depends on what, and where
-// are the boundaries.
+// These are the views the global layer owns. They describe relationships
+// between systems, not the internals of any single system — internals stay in
+// each project's own design repo.
 
 views {
   view index {
-    title 'ACES Landscape'
-    description 'All known systems and their cross-project relationships'
+    title 'ACES Platform Landscape'
+    description 'All aggregated systems, actors and shared platforms'
     include *
   }
 
-  // Placeholder view so the repo builds before any project repo is wired in.
-  // Once project design repos are synced, add a real landscape view that
-  // includes their system elements by fully qualified name.
-  view emptyState {
-    title 'No projects aggregated yet'
-    description '''
-      Run `npm run sync -- --include-planned` after project design repos exist,
-      then replace this view with a real landscape view.
-    '''
-    include aces.note
+  view crossSystem {
+    title 'Cross-System Relationships'
+    description 'How aggregated systems depend on shared platforms'
+    include operator, aces
+    include wechatWork, ragflow, llmWiki
+  }
+
+  view sharedDependencies {
+    title 'Shared Platform Dependencies'
+    description 'Which systems depend on WeChat Work, RAGFlow and LLM Wiki'
+    include aces.*
+    include wechatWork, ragflow, llmWiki
   }
 }
