@@ -30,6 +30,28 @@ aces-architecture  --submodule-->  design-<project>   (aggregator, not aggregate
 
 A design change in one project updates a pointer **only in this repo**. Project repos stay untouched.
 
+## Why project sources are not merged into this model
+
+Each project design repo declares its own `specification` kinds and its own top-level element names (`operator`, `wechatWork`, `ragflow`, ...). Merging those sources into one LikeC4 project produces:
+
+```text
+Duplicate element kind 'actor'
+Duplicate element name wechatWork
+```
+
+So this layer **does not absorb project sources**. It keeps its own model describing *relationships between systems*, and each project stays an independent LikeC4 project with its own namespace.
+
+Project repos are still pulled in as submodules, and they still build and publish on their own. They are referenced here for traceability and drift detection, not merged into a single model.
+
+Because LikeC4 searches the workspace root recursively, all commands pass `src` explicitly:
+
+```bash
+likec4 validate src
+likec4 build src -o ./dist
+```
+
+Pointing the CLI at the repo root would drag `projects/**` back in and reintroduce the duplicate-kind errors.
+
 ## What belongs here, and what does not
 
 | Content | Location |
@@ -115,4 +137,10 @@ Point an MCP server at this repo to let agents query the aggregated model:
 
 ## Current state
 
-No project design repos exist yet, so the model contains a single placeholder system (`aces`). Once `design-beauty` and `design-maop` are created and synced, replace the `emptyState` view in `src/views/landscape.c4` with real landscape views.
+`design-beauty` is aggregated (submodule present, registry status `active`). Its model has 31 elements and 14 views.
+
+This layer currently describes the cross-project relationship: operator, the Beauty service, and the three shared platforms (WeChat Work, RAGFlow, LLM Wiki). It does not duplicate Beauty internals — those live in [`design-beauty`](https://github.com/aces-org-zhuang/design-beauty).
+
+`design-maop` is registered as `planned` and not yet created.
+
+To add another project: register it in `projects.json`, set `status` to `active` once its repo exists, run `npm run sync -- --include-planned`, and add a system stub under `src/systems/`.
