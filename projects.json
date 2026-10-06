@@ -1,13 +1,13 @@
 {
   "$comment": "Registry of project-level design repos aggregated by this layer. Source of truth for cross-project views.",
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "projects": [
     {
       "id": "beauty",
       "name": "BeautyCustomerService",
       "designRepo": "https://github.com/aces-org-zhuang/design-beauty.git",
       "localPath": "projects/design-beauty",
-      "status": "planned",
+      "status": "active",
       "owner": "aces-org-zhuang"
     },
     {
