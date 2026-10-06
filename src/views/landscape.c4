@@ -1,0 +1,25 @@
+// Cross-project landscape views.
+//
+// This layer aggregates systems across project design repos. It answers
+// questions no single project repo can: what depends on what, and where
+// are the boundaries.
+
+views {
+  view index {
+    title 'ACES Landscape'
+    description 'All known systems and their cross-project relationships'
+    include *
+  }
+
+  // Placeholder view so the repo builds before any project repo is wired in.
+  // Once project design repos are synced, add a real landscape view that
+  // includes their system elements by fully qualified name.
+  view emptyState {
+    title 'No projects aggregated yet'
+    description '''
+      Run `npm run sync -- --include-planned` after project design repos exist,
+      then replace this view with a real landscape view.
+    '''
+    include aces.note
+  }
+}

@@ -1,0 +1,29 @@
+// Boundary marker for the aggregation layer itself.
+//
+// `aces.note` is a placeholder element that keeps the model non-empty while
+// no project design repos are synced yet. It is not a real system.
+//
+// Once project repos are synced, replace emptyState in landscape.c4 with
+// views that include project systems by fully qualified name. LikeC4 does not
+// inherit container scope across files, so cross-project references must use
+// full paths (e.g. beauty.backend.api, not api).
+
+model {
+  aces = system 'ACES Platform' {
+    description '''
+      Global architecture aggregation layer.
+
+      Owns cross-project views over project-level design repos. It does not
+      hold project-internal design detail: each project keeps its own design
+      repo, and this layer only composes their system-level views.
+    '''
+
+    note = component 'Aggregation Note' {
+      description 'Placeholder so the model compiles before any project repo is synced'
+      style {
+        color muted
+        opacity 40%
+      }
+    }
+  }
+}

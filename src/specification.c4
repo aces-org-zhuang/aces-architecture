@@ -1,0 +1,34 @@
+specification {
+  element actor {
+    style {
+      shape person
+    }
+  }
+  element system
+  element component
+  element service {
+    style {
+      shape component
+    }
+  }
+  element queue {
+    style {
+      shape queue
+    }
+  }
+  element storage {
+    style {
+      shape storage
+    }
+  }
+  element database {
+    style {
+      shape cylinder
+    }
+  }
+  element external {
+    style {
+      color muted
+    }
+  }
+}

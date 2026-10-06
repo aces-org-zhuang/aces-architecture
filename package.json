@@ -1,0 +1,21 @@
+{
+  "name": "aces-architecture",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ACES global architecture aggregation layer. Cross-project views over project-level design repos.",
+  "scripts": {
+    "dev": "likec4 serve",
+    "build": "likec4 build -o ./dist",
+    "validate": "likec4 validate",
+    "format": "likec4 format",
+    "format:check": "likec4 format --check",
+    "sync": "node scripts/sync-projects.mjs",
+    "sync:check": "node scripts/sync-projects.mjs --check"
+  },
+  "devDependencies": {
+    "likec4": "1.58.0"
+  },
+  "engines": {
+    "node": ">=22.22.2"
+  }
+}

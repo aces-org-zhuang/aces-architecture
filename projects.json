@@ -1,0 +1,33 @@
+{
+  "$comment": "Registry of project-level design repos aggregated by this layer. Source of truth for cross-project views.",
+  "updated": "2026-10-06",
+  "projects": [
+    {
+      "id": "beauty",
+      "name": "BeautyCustomerService",
+      "designRepo": "https://github.com/aces-org-zhuang/design-beauty.git",
+      "localPath": "projects/design-beauty",
+      "status": "planned",
+      "owner": "aces-org-zhuang"
+    },
+    {
+      "id": "maop",
+      "name": "maop",
+      "designRepo": "https://github.com/aces-org-zhuang/design-maop.git",
+      "localPath": "projects/design-maop",
+      "status": "planned",
+      "owner": "aces-org-zhuang"
+    }
+  ],
+  "externalSystems": [
+    {
+      "id": "gateway",
+      "title": "API Gateway",
+      "note": "Platform-owned; not yet modeled. Add when its design repo exists."
+    }
+  ],
+  "resolved": {
+    "beauty": null,
+    "maop": null
+  }
+}
