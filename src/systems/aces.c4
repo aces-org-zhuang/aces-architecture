@@ -1,0 +1,41 @@
+// Cross-project landscape.
+//
+// Aggregated over project-level design repos. This view is the reason the
+// global layer exists: it spans systems that no single project repo can see.
+//
+// Cross-file references must use fully qualified names because LikeC4 does
+// not inherit container scope across files.
+
+model {
+  operator = actor 'Platform Operator' {
+    description 'Operates knowledge and escalations across projects'
+  }
+
+  wechatWork = external 'WeChat Work' {
+    description 'Shared messaging platform'
+  }
+
+  ragflow = external 'RAGFlow' {
+    description 'Shared RAG and knowledge base service'
+  }
+
+  llmWiki = external 'LLM Wiki' {
+    description 'Shared wiki candidate source'
+  }
+
+  aces = system 'ACES Platform' {
+    description '''
+      Cross-project aggregation. Each project keeps its own design repo;
+      this layer composes their system-level views only.
+    '''
+
+    beauty = system 'Beauty Customer Service' {
+      description 'WeChat-based beauty consultation and knowledge service'
+    }
+  }
+
+  operator -> aces.beauty 'operates'
+  aces.beauty -> wechatWork 'sends and receives messages'
+  aces.beauty -> ragflow 'retrieves knowledge'
+  aces.beauty -> llmWiki 'reads candidate wiki'
+}
