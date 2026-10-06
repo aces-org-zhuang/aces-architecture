@@ -4,11 +4,11 @@
   "private": true,
   "description": "ACES global architecture aggregation layer. Cross-project views over project-level design repos.",
   "scripts": {
-    "dev": "likec4 serve",
-    "build": "likec4 build -o ./dist",
-    "validate": "likec4 validate",
-    "format": "likec4 format",
-    "format:check": "likec4 format --check",
+    "dev": "likec4 serve src",
+    "build": "likec4 build src -o ./dist",
+    "validate": "likec4 validate src",
+    "format": "likec4 format src",
+    "format:check": "likec4 format src --check",
     "sync": "node scripts/sync-projects.mjs",
     "sync:check": "node scripts/sync-projects.mjs --check"
   },
