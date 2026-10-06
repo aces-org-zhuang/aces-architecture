@@ -1,0 +1,3 @@
+[submodule "projects/design-beauty"]
+	path = projects/design-beauty
+	url = https://github.com/aces-org-zhuang/design-beauty.git
